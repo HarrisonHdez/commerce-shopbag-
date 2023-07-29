@@ -1,5 +1,5 @@
 "use client"
-// components/Products.tsx
+
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import SearchBar from './SearchBar';
@@ -19,17 +19,17 @@ const Products = () => {
     const [filteredProducts, setFilteredProducts] = useState<ProductData[]>([]);
     const [showNoResultsMessage, setShowNoResultsMessage] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:3001/products');
-                const productsData = await response.json();
-                setProducts(productsData);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+    const fetchData = async () => {
+        try {
+            const response = await fetch('https://my-json-server.typicode.com/HarrisonHdez/data/products');
+            const productsData = await response.json();
+            setProducts(productsData);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
+    useEffect(() => {
         fetchData();
     }, []);
 
@@ -37,11 +37,10 @@ const Products = () => {
         setFilteredProducts(results);
         setShowNoResultsMessage(results.length === 0);
     };
-            
+
     return (
         <section className="p-8">
-            <h2 className="text-3xl font-semibold mb-6 text-purple-700 text-center">Our products</h2>
-
+            <h2 className="text-3xl font-semibold mb-6">Our products</h2>
             <SearchBar products={products} onSearch={handleSearch} />
             {showNoResultsMessage ? (
                 <p className="text-red-500">No results found. Please try a different search term.</p>
@@ -61,11 +60,9 @@ const Products = () => {
                         ))}
                     </div>
                 </div>
-
             )}
         </section>
-    ); 
+    );
 };
 
 export default Products;
-

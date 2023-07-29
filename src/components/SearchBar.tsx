@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+"use client"
+
+
+import React, { useState, useEffect, useMemo } from 'react';
 import { ProductData } from './Products';
 
-interface SearchBarProps {
+export interface SearchBarProps {
     products: ProductData[];
     onSearch: (results: ProductData[]) => void;
 }
@@ -10,17 +13,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ products, onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredResults, setFilteredResults] = useState<ProductData[]>([]);
 
-    useEffect(() => {
-        const newFilteredResults = products.filter((product) =>
+    const newFilteredResults = useMemo(() => {
+        return products.filter((product) =>
             product.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
+    }, [products, searchTerm]);
 
-        // Comparar los resultados filtrados antiguos y nuevos
-        if (JSON.stringify(filteredResults) !== JSON.stringify(newFilteredResults)) {
-            setFilteredResults(newFilteredResults);
-            onSearch(newFilteredResults);
-        }
-    }, [searchTerm, products, filteredResults, onSearch]);
+    useEffect(() => {
+        setFilteredResults(newFilteredResults);
+        onSearch(newFilteredResults);
+    }, [newFilteredResults, onSearch]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
