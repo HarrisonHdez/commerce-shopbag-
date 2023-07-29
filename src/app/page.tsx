@@ -6,18 +6,10 @@ import Image from 'next/image';
 import MainButton from '@/components/MainButton';
 import Products from '@/components/Products';
 import NavBar from '@/components/NavBar';
-
-
-// import { decrement, increment, reset } from "@/redux/features/cartSlice";
-// import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import Footer from '@/components/Footer';
 
 export default function Home() {
 
-  // const count = useAppSelector((state) => state.counterReducer.value);
-  // const dispatch = useAppDispatch();
-
-
-  
 
   return (
     <main>
@@ -50,8 +42,7 @@ export default function Home() {
 
 
       <Products />
-
-
+      <Footer />
     </main>
   )
 }

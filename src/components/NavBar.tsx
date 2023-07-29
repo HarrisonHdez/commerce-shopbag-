@@ -20,7 +20,6 @@ const NavBar = () => {
           className="logo"
         />
         <div className="flex items-center space-x-8">
-          {/* Agregar margen a la derecha para separar los enlaces */}
 
           <Link
             activeClass="active"
@@ -43,7 +42,6 @@ const NavBar = () => {
 
           <Link to="products" className="text-white flex items-center">
             <FaShoppingCart className="mr-2" size={24} />
-            {/* Mostrar el contador de productos en el carrito si es mayor que cero */}
             {cartItemsCount > 0 && (
               <div className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                 {cartItemsCount}

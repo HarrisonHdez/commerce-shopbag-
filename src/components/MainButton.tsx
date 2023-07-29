@@ -2,7 +2,7 @@ import { Link } from "react-scroll";
 
 interface MainButtonProps {
   value: string;
-  href: string; // Nueva prop para la ruta
+  href: string;
 }
 
 const MainButton: React.FC<MainButtonProps> = ({ value, href }) => {
