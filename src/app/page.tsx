@@ -9,12 +9,12 @@ const page = () => {
     <main>
       {/* Header */}
       <header className={styles.home}>
-        <section className={`${styles.home__content} ${styles.container}`}>
+        <section className={`${styles.home__content} ${styles.container} animate__animated animate__fadeIn`}>
 
           <div className={styles.home__text}>
             <h1 className={styles.home__title}>Welcome to Shop Bag your favorite online store</h1>
             <p className={styles.home__subtitle}>Discover a Universe of Products and Comforts from the Comfort of your Home</p>
-            <MainButton value="Start Shopping" />
+            <MainButton value="Start Shopping" href="/products" />
           </div>
 
 
@@ -34,11 +34,7 @@ const page = () => {
 
 
 
-      {/* Products */}
-      <Products />
-
-
-      {/* Products */}
+      
 
 
 

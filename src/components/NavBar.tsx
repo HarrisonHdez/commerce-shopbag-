@@ -16,9 +16,16 @@ const NavBar = () => {
           priority={true}
           className="logo"
         />
-        <div className="flex items-center">
+        <div className="flex items-center space-x-8">
+          {/* Agregar margen a la derecha para separar los enlaces */}
+          <Link href="/" className="text-white flex items-center text-lg">
+            Home
+          </Link>
+          <Link href="/products" className="text-white flex items-center text-lg">
+            Products
+          </Link>
           <Link href="/cart" className="text-white flex items-center">
-            <FaShoppingCart className="mr-2" />
+            <FaShoppingCart className="mr-2" size={24}/>
           </Link>
           {/* Agregar aquí el contador de productos en el carrito si es necesario */}
         </div>

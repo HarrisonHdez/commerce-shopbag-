@@ -1,14 +1,15 @@
-import React, { ReactNode } from 'react';
+import Link from 'next/link';
 
 interface MainButtonProps {
-  value: ReactNode;
+  value: string;
+  href: string; // Nueva prop para la ruta
 }
 
-const MainButton: React.FC<MainButtonProps> = ({ value }) => {
+const MainButton: React.FC<MainButtonProps> = ({ value, href }) => {
   return (
-    <button className="main__button">
+    <Link href={href} className="main__button">
       {value}
-    </button>
+    </Link>
   );
 };
 
