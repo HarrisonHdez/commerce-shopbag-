@@ -37,7 +37,7 @@ const Products = () => {
         setFilteredProducts(results);
         setShowNoResultsMessage(results.length === 0);
     };
-
+            
     return (
         <section className="p-8">
             <h2 className="text-3xl font-semibold mb-6 text-purple-700 text-center">Our products</h2>
@@ -64,8 +64,9 @@ const Products = () => {
 
             )}
         </section>
-    );
+    ); 
 };
-
+ 
 export default Products;
-
+   
+ 
