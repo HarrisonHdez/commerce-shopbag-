@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -17,11 +23,34 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  min-height: 100vh;
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+    background-color: white;
+}
+
+
+
+.logo {
+  max-width: 140px;
+  width: 50%;
+  height: auto;
+}
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: auto;
+}
+.home {
+  background-image: url("/images/background.jpg");
+}
+
+.custom-header {
+  background-color: white;
+  /* Otras propiedades de estilo para el header */
 }
