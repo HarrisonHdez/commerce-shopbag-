@@ -1,21 +1,48 @@
-import React from 'react'
+"use client"
 
-const SearchBar = () => {
-    return (
-        <div className="flex items-center">
-            <input
-                type="text"
-                placeholder="Search Product..."
-                className="bg-white rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"
-            />
-            <button
-                type="button"
-                className="ml-2 bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-            >
-                Search
-            </button>
-        </div>
-    );
+import React, { useState, useEffect } from 'react';
+
+interface Product {
+    id: number;
+    title: string;
 }
 
-export default SearchBar
+interface SearchBarProps {
+    products: Product[];
+    onSearch: (results: Product[]) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ products, onSearch }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredResults, setFilteredResults] = useState<Product[]>([]);
+
+    useEffect(() => {
+        const newFilteredResults = products.filter((product) =>
+            product.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        // Comparar los resultados filtrados antiguos y nuevos
+        if (JSON.stringify(filteredResults) !== JSON.stringify(newFilteredResults)) {
+            setFilteredResults(newFilteredResults);
+            onSearch(newFilteredResults);
+        }
+    }, [searchTerm, products, filteredResults, onSearch]);
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    };
+
+    return (
+        <div className="relative flex justify-center">
+            <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="px-2 py-1 rounded-md border border-purple-700 mr-2"
+            />
+        </div>
+    );
+};
+
+export default SearchBar;

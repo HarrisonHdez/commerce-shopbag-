@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 
 const NavBar = () => {
   return (
-    <nav className="bg-[#6D00DB] fixed top-0 left-0 w-full shadow-lg py-4">
+    <nav className="bg-[#6D00DB] fixed top-0 left-0 w-full shadow-lg py-4 z-10">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <Image
           width={1}
@@ -16,7 +16,6 @@ const NavBar = () => {
           priority={true}
           className="logo"
         />
-        <SearchBar />
         <div className="flex items-center">
           <Link href="/cart" className="text-white flex items-center">
             <FaShoppingCart className="mr-2" />
