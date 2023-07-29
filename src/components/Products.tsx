@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import SearchBar from './SearchBar';
 
-interface ProductData {
+export interface ProductData {
     id: number;
     title: string;
     description: string;

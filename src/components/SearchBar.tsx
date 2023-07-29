@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ProductData } from './Products'; // Asegúrate de que esté importada la interfaz correcta
+import { ProductData } from './Products';
 
 interface SearchBarProps {
-    products: ProductData[]; // Usa la interfaz ProductData en lugar de Product
-    onSearch: (results: ProductData[]) => void; // Usa la interfaz ProductData en lugar de Product
+    products: ProductData[];
+    onSearch: (results: ProductData[]) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ products, onSearch }) => {
@@ -22,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ products, onSearch }) => {
         }
     }, [searchTerm, products, filteredResults, onSearch]);
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
     };
 
@@ -32,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ products, onSearch }) => {
                 type="text"
                 placeholder="Search products..."
                 value={searchTerm}
-                onChange={handleSearch}
+                onChange={handleInputChange}
                 className="px-2 py-1 rounded-md border border-purple-700 mr-2"
             />
         </div>
