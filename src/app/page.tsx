@@ -1,14 +1,29 @@
+"use client"
+
 import React from 'react'
 import styles from './styles.module.css'
 import Image from 'next/image';
 import MainButton from '@/components/MainButton';
 import Products from '@/components/Products';
+import NavBar from '@/components/NavBar';
 
-const page = () => {
+
+// import { decrement, increment, reset } from "@/redux/features/cartSlice";
+// import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+
+export default function Home() {
+
+  // const count = useAppSelector((state) => state.counterReducer.value);
+  // const dispatch = useAppDispatch();
+
+
+  
+
   return (
     <main>
       {/* Header */}
-      <header className={styles.home}>
+      <NavBar />
+      <header className={styles.home} id="home">
         <section className={`${styles.home__content} ${styles.container} animate__animated animate__fadeIn`}>
 
           <div className={styles.home__text}>
@@ -34,26 +49,13 @@ const page = () => {
 
 
 
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <Products />
 
 
     </main>
   )
 }
 
-export default page
+
 
 

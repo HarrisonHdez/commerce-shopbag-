@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from "react-scroll";
 
 interface MainButtonProps {
   value: string;
@@ -7,9 +7,15 @@ interface MainButtonProps {
 
 const MainButton: React.FC<MainButtonProps> = ({ value, href }) => {
   return (
-    <Link href={href} className="main__button">
-      {value}
-    </Link>
+    <Link
+      activeClass="active"
+      to="products"
+      spy={true}
+      smooth={true}
+      offset={-70}
+      duration={500}
+      className="main__button"
+    > {value}</Link>
   );
 };
 

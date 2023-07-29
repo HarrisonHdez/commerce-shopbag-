@@ -14,6 +14,8 @@ export interface ProductData {
 }
 
 const Products = () => {
+    
+    
     const [products, setProducts] = useState<ProductData[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<ProductData[]>([]);
     const [showNoResultsMessage, setShowNoResultsMessage] = useState(false);
@@ -38,7 +40,8 @@ const Products = () => {
     };
 
     return (
-        <section className="p-8 animate__animated animate__fadeIn">
+        <section className="p-8 animate__animated animate__fadeIn" id="products">
+                <h1 className="">Products</h1>
 
             <SearchBar products={products} onSearch={handleSearch} />
             {showNoResultsMessage ? (
