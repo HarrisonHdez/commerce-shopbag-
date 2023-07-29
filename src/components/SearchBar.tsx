@@ -1,20 +1,14 @@
-"use client"
-
 import React, { useState, useEffect } from 'react';
-
-interface Product {
-    id: number;
-    title: string;
-}
+import { ProductData } from './Products'; // Asegúrate de que esté importada la interfaz correcta
 
 interface SearchBarProps {
-    products: Product[];
-    onSearch: (results: Product[]) => void;
+    products: ProductData[]; // Usa la interfaz ProductData en lugar de Product
+    onSearch: (results: ProductData[]) => void; // Usa la interfaz ProductData en lugar de Product
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ products, onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredResults, setFilteredResults] = useState<Product[]>([]);
+    const [filteredResults, setFilteredResults] = useState<ProductData[]>([]);
 
     useEffect(() => {
         const newFilteredResults = products.filter((product) =>
