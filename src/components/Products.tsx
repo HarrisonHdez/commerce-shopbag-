@@ -61,7 +61,7 @@ const Products = () => {
   };
 
   return (
-    <section className="p-8 animate__animated animate__fadeIn" id="products">
+    <section className="p-8 animate__animated animate__fadeIn" id="products" style={{ paddingBottom: '200px' }}>
       <h2 className="text-center text-purple-800 text-4xl font-bold pb-16">Products</h2>
 
       <SearchBar products={products} onSearch={handleSearch} />
