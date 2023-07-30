@@ -5,16 +5,16 @@ import SearchBar from './SearchBar';
 
 
 export interface ProductData {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    currency: string;
-    image: string;
-    rating: number;
-    category: string; 
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  currency: string;
+  image: string;
+  rating: number;
+  category: string;
 }
-  
+
 
 const Products = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
@@ -39,8 +39,8 @@ const Products = () => {
 
   const handleSearch = (
     results: ProductData[],
-    selectedCategory?: string | null, 
-    selectedPriceFilter?: string | null 
+    selectedCategory?: string | null,
+    selectedPriceFilter?: string | null
   ) => {
     let filteredResults = results;
 
@@ -75,6 +75,7 @@ const Products = () => {
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
+                id={product.id}
                 title={product.title}
                 description={product.description}
                 price={product.price}
@@ -82,7 +83,8 @@ const Products = () => {
                 image={product.image}
                 rating={product.rating}
               />
-            ))}
+            ))
+            }
           </div>
         </div>
       )}

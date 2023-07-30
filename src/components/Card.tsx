@@ -1,13 +1,10 @@
-
-
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/redux/features/cartSlice';
-
-
 import Image from 'next/image';
 import React from 'react';
 
 interface CardProps {
+    id: number;
     title: string;
     description: string;
     price: number;
@@ -16,18 +13,19 @@ interface CardProps {
     rating: number;
 }
 
-const Card: React.FC<CardProps> = ({ title, description, price, currency, image, rating }) => {
+const Card: React.FC<CardProps> = ({ id, title, description, price, currency, image, rating }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
         const product = {
-            id: 1,
+            id,
             title,
             price,
             quantity: 1,
         };
         dispatch(addToCart(product));
     };
+
     return (
         <div className="max-w-[320px] border border-gray-300 rounded">
             <img src={image} alt={title} className="w-full h-300 object-cover rounded-t" />
@@ -47,11 +45,10 @@ const Card: React.FC<CardProps> = ({ title, description, price, currency, image,
                         alt="add to cart"
                     />
                 </button>
-
             </div>
         </div>
-
     );
 };
 
 export default Card;
+
