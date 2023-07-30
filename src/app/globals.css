@@ -47,7 +47,34 @@ body {
   width: 90%;
   margin: auto;
 }
+.header__chat {
+  position: fixed;
+  right: 41px;
+  bottom: 15px;
+  cursor: pointer;
+}
 
+.header__float {
+  transition: transform 1s ease-in-out;
+  animation: float 3s ease-in-out infinite;
+}  
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.scroll-to-top-button {
+  position: fixed;
+  right: 43px;
+  bottom: 100px;
+  cursor: pointer;
+}
 .logo {
   max-width: 140px;
   width: 50%;
@@ -72,3 +99,4 @@ body {
   right: 0;
   left: 0;
 }
+

@@ -32,6 +32,7 @@ export default function Home() {
               priority={true}
               src="/svg/image-home.svg"
               alt="image home"
+              className='header__float '
             />
           </div>
 
