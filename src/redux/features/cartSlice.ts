@@ -1,11 +1,10 @@
-// src/redux/features/cartSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface CartItem {
   id: number;
   title: string;
   price: number;
-  quantity: number; // Agregamos la propiedad 'quantity'
+  quantity: number;
 }
 
 interface CartState {
@@ -16,18 +15,38 @@ const initialState: CartState = {
   items: [],
 };
 
+const CART_STORAGE_KEY = "cart";
+
+const saveCartToLocalStorage = (cart: CartState) => {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+};
+
+const loadCartFromLocalStorage = (): CartState => {
+  const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+  return storedCart ? JSON.parse(storedCart) : initialState;
+};
+
 export const cartSlice = createSlice({
   name: "cart",
-  initialState,
+  initialState: loadCartFromLocalStorage(),
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
-      state.items.push({ ...action.payload, quantity: 1 }); // Siempre agregamos el producto
+      const { id } = action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.items.push({ ...action.payload, quantity: 1 });
+      }
+      saveCartToLocalStorage(state);
     },
     removeFromCart: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
+      saveCartToLocalStorage(state);
     },
     clearCart: (state) => {
       state.items = [];
+      saveCartToLocalStorage(state);
     },
   },
 });
